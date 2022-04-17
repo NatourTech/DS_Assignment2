@@ -9,8 +9,14 @@ public class Warmup {
         int back_ = back;
         while(i < arr.length){
             if(arr[i] == x){
+
+                // g vc testtttt
+                int q = 3;
+
+                /// end the test
                 return i;
             }
+
 
             if(forward_ == 0) {
 
