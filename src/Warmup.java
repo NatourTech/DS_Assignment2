@@ -10,7 +10,7 @@ public class Warmup {
         while(i < arr.length){
             if(arr[i] == x){
 
-                // g vc testtttt
+                // g vc testtttta
                 int q = 3;
 
                 /// end the test
