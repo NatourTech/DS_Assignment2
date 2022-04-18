@@ -60,6 +60,7 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public void backtrack() {
         // TODO: implement your code here
+
     }
 
     @Override

@@ -1,16 +1,18 @@
 public class Test {
     public static void main(String[] args) {
-        int[] a = {17,62,19,10,1,78,20,20,20,10};
-        int[] b = {1};
+        int[] a = {1,2,4};
+        int[] b = {};
         int x = 4;
         int forward = 3;
         int back = 2;
         Warmup test = new Warmup();
         Stack test2 = new Stack();
 
-        int res = test.backtrackingSearch(b,x,forward,back,test2);
+        int res = test.backtrackingSearch(a,x,forward,back,test2);
 
-        System.out.print(res);
+        int res_2 = test.consistentBinSearch(a,4,test2);
+
+        System.out.print(res_2);
     }
 
 }
