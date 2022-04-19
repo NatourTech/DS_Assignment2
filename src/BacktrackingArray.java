@@ -2,6 +2,7 @@
 
 public class BacktrackingArray implements Array<Integer>, Backtrack {
     private Stack stack;
+    private int Volume = 0;
     private int[] arr;
     // TODO: implement your code here
 
@@ -12,49 +13,64 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     }
 
     @Override
-    public Integer get(int index){
+    public Integer get(int index) {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer search(int k) {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
     public void insert(Integer x) {
         // TODO: implement your code here
+
+        if (this.Volume == this.arr.length) {
+            throw new RuntimeException("The Array is full!!");
+        }
+
+        int[] meta = {0, this.Volume, x.intValue()};
+
+        this.stack.push(meta);
+        this.arr[this.Volume] = x.intValue();
+
+        this.Volume = this.Volume + 1;
+
     }
 
     @Override
     public void delete(Integer index) {
         // TODO: implement your code here
+
+
     }
 
     @Override
     public Integer minimum() {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer maximum() {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer successor(Integer index) {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer predecessor(Integer index) {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        return null; // temporal return command to prevent compilation error
     }
 
     @Override
@@ -65,14 +81,14 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
 
     @Override
     public void retrack() {
-		/////////////////////////////////////
-		// Do not implement anything here! //
-		/////////////////////////////////////
+        /////////////////////////////////////
+        // Do not implement anything here! //
+        /////////////////////////////////////
     }
 
     @Override
     public void print() {
         // TODO: implement your code here
     }
-    
+
 }
