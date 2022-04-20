@@ -1,9 +1,9 @@
 
 
 public class BacktrackingArray implements Array<Integer>, Backtrack {
-    private Stack stack;
-    private int Volume = 0;
-    private int[] arr;
+    public Stack stack;
+    public int Volume = 0;
+    public int[] arr;
     // TODO: implement your code here
 
     // Do not change the constructor's signature
@@ -45,7 +45,19 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public void delete(Integer index) {
         // TODO: implement your code here
+        // delete with theta(n)
 
+        // validate when arr is empty??
+
+        int[] meta = {1, index.intValue(), this.arr[index.intValue()]};
+        this.stack.push(meta);
+
+        for(int i = index.intValue(); i < this.arr.length - 1; i++ ){
+            this.arr[i] = this.arr[i + 1];
+
+        }
+
+        this.Volume = this.Volume - 1;
 
     }
 
@@ -76,7 +88,19 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public void backtrack() {
         // TODO: implement your code here
+        // validate when stack is empty??
 
+        int [] stackPop = (int[]) this.stack.pop();
+        if(stackPop[0] == 0){
+            this.Volume = this.Volume - 1;
+        } else if (stackPop[0] == 1) {
+            for(int i = this.Volume ; i > stackPop[1]; i--){
+                this.arr[i] = this.arr[i - 1];
+            }
+
+            this.arr[stackPop[1]] = stackPop[2];
+            this.Volume = this.Volume + 1;
+        }
     }
 
     @Override
