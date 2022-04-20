@@ -23,7 +23,11 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public Integer search(int k) {
         // TODO: implement your code here
-        return null; // temporal return command to prevent compilation error
+        for(int i = 0; i < Volume; i++ ){
+            if(arr[i] == k) return i;
+        }
+
+        return -1; // temporal return command to prevent compilation error
     }
 
     @Override

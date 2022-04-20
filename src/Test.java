@@ -28,7 +28,7 @@ public class Test {
 
         System.out.println(Arrays.toString(unsarray.arr) + "second  backtrack");
         System.out.println(unsarray.Volume);
-        System.out.println(unsarray.get(2));
+        System.out.println(unsarray.search(3));
 
 
 
