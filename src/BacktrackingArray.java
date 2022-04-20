@@ -16,7 +16,8 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     public Integer get(int index) {
         // TODO: implement your code here
 
-        return null; // temporal return command to prevent compilation error
+        int res = this.arr[index];
+        return res;
     }
 
     @Override
