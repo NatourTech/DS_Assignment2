@@ -9,26 +9,23 @@ public class Test {
         int back = 2;
         Stack stack = new Stack();
 
-        BacktrackingArray unsarray = new BacktrackingArray(stack, 5);
+        BacktrackingArray unsarray = new BacktrackingArray(stack, 12);
         unsarray.insert(new Integer(1));
-        unsarray.insert(new Integer(2));
         unsarray.insert(new Integer(7));
         unsarray.insert(new Integer(3));
+        unsarray.insert(new Integer(-2));
+        unsarray.insert(new Integer(-4));
+        unsarray.insert(new Integer(-11));
+        unsarray.insert(new Integer(-1));
+        unsarray.insert(new Integer(2));
+        unsarray.insert(new Integer(5));
         System.out.println(Arrays.toString(unsarray.arr));
 
-        unsarray.delete(new Integer(1));
-        System.out.println(Arrays.toString(unsarray.arr) + "first  delete");
-        unsarray.delete(new Integer(2));
-        System.out.println(Arrays.toString(unsarray.arr)  + "second  delete");
 
-        unsarray.backtrack();
-        System.out.println(Arrays.toString(unsarray.arr) + "first  backtrack");
-        unsarray.backtrack();
+        System.out.println(unsarray.successor(0));
+        System.out.println(unsarray.predecessor(0));
+        unsarray.print();
 
-
-        System.out.println(Arrays.toString(unsarray.arr) + "second  backtrack");
-        System.out.println(unsarray.Volume);
-        System.out.println(unsarray.search(3));
 
 
 

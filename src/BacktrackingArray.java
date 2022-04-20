@@ -15,7 +15,7 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public Integer get(int index) {
         // TODO: implement your code here
-
+        // validate if index is legal??
         int res = this.arr[index];
         return res;
     }
@@ -69,25 +69,84 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public Integer minimum() {
         // TODO: implement your code here
-        return null; // temporal return command to prevent compilation error
+
+        if(Volume == 0){
+            throw new RuntimeException("Array Is Empt!");
+        }
+        int min_value = 0;
+
+        for(int i = 0; i < arr.length; i++){
+            if(arr[min_value] > arr[i]){
+                min_value = i;
+            }
+        }
+        return min_value; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer maximum() {
         // TODO: implement your code here
-        return null; // temporal return command to prevent compilation error
+
+        if(Volume == 0){
+            throw new IllegalArgumentException("Array Is Empty");
+        }
+        int max_value = 0;
+
+        for(int i = 0; i < arr.length; i++){
+            if(arr[max_value] < arr[i]){
+                max_value = i;
+            }
+        }
+        return max_value; // temporal return command to prevent compilation error
     }
 
+    // help finction
+    private int abs_value(int val){
+        if ( val < 0) return -val;
+        return val;
+    }
     @Override
     public Integer successor(Integer index) {
         // TODO: implement your code here
-        return null; // temporal return command to prevent compilation error
+        //validate if array length is 1 or 0 ??
+
+        if(index >= Volume){
+            throw new RuntimeException("The Index Is Illegal!!");
+        }
+
+        int minDiff = Integer.MAX_VALUE;
+        int suc = 0;
+
+        for(int i = 0; i < Volume; i++){
+            if(arr[i] > arr[index]  && abs_value(arr[i] - arr[index]) < minDiff){
+                minDiff = abs_value(arr[i] - arr[index]);
+
+                suc = i;
+            }
+        }
+
+        return suc; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer predecessor(Integer index) {
         // TODO: implement your code here
-        return null; // temporal return command to prevent compilation error
+        if(index >= Volume){
+            throw new RuntimeException("The Index Is Illegal!!");
+        }
+
+        int minDiff = Integer.MAX_VALUE;
+        int suc = 0;
+
+        for(int i = 0; i < Volume; i++){
+            if(arr[i] < arr[index]  && abs_value(arr[i] - arr[index]) < minDiff){
+                minDiff = abs_value(arr[i] - arr[index]);
+
+                suc = i;
+            }
+        }
+
+        return suc; // temporal return command to prevent compilation error
     }
 
     @Override
@@ -118,6 +177,9 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public void print() {
         // TODO: implement your code here
+        for(int i = 0; i < Volume; i++) {
+            System.out.print(arr[i]+" ");
+        }
     }
 
 }
