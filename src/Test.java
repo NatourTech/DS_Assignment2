@@ -39,11 +39,9 @@ public class Test {
         soArray.insert(-1);
         soArray.insert(-19);
         soArray.print();
-
-        soArray.delete(0);
-
         System.out.println("");
-        soArray.print();
+        System.out.println(soArray.maximum());
+        System.out.println(soArray.minimum());
 
 
     }

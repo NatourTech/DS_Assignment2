@@ -80,13 +80,19 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
     @Override
     public Integer minimum() {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+
+        if(volume == 0){
+            throw new RuntimeException("Array Is Empt!");
+        }
+    	return arr[0];
     }
 
     @Override
     public Integer maximum() {
-        // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        if(volume == 0){
+            throw new RuntimeException("Array Is Empt!");
+        }
+        return arr[volume - 1];
     }
 
     @Override
