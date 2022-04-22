@@ -31,6 +31,7 @@ public class Test {
         Stack stack2 = new Stack();
         // sorted array obj
         BacktrackingSortedArray soArray = new BacktrackingSortedArray(stack2, 10);
+        soArray.print();
         soArray.insert(6);
         soArray.insert(7);
         soArray.insert(2);
@@ -38,10 +39,21 @@ public class Test {
         soArray.insert(-4);
         soArray.insert(-1);
         soArray.insert(-19);
+//        soArray.print();
+//        System.out.println("");
+//        System.out.println(soArray.maximum());
+//        System.out.println(soArray.minimum());
         soArray.print();
-        System.out.println("");
-        System.out.println(soArray.maximum());
-        System.out.println(soArray.minimum());
+        soArray.backtrack();
+        soArray.backtrack();
+        soArray.backtrack();
+        soArray.print();
+        soArray.delete(2);
+        soArray.print();
+        soArray.backtrack();
+        soArray.print();
+
+
 
 
     }
