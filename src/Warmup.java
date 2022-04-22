@@ -38,10 +38,9 @@ public class Warmup {
         // TODO: implement your code here
 
         int low = 0, high = arr.length - 1;
-
+        int inconsistencies  = 0;
         while (low <= high) {
-            // Your implementation should contain a this line:
-            int inconsistencies = Consistency.isConsistent(arr);
+
             int middle = (low + high) / 2;
 
             myStack.push(arr[middle]);
@@ -59,6 +58,8 @@ public class Warmup {
                 high = middle - 1;
             } else low = middle + 1;
 
+            // Your implementation should contain a this line:
+            inconsistencies = Consistency.isConsistent(arr);
 
         }
 
