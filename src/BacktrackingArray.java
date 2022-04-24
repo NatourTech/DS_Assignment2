@@ -50,20 +50,14 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
     @Override
     public void delete(Integer index) {
         // TODO: implement your code here
-        // delete with theta(n)
-
-        // validate when arr is empty??
-
-        int[] meta = {1, index.intValue(), this.arr[index.intValue()]};
-        this.stack.push(meta);
-
-        for(int i = index.intValue(); i < this.arr.length - 1; i++ ){
-            this.arr[i] = this.arr[i + 1];
-
-        }
-
-        this.Volume = this.Volume - 1;
-
+        // deletion of theta(1)
+        if(Volume == 0 || index < 0 || index >= Volume) throw new RuntimeException("Empty array or illegal index!");
+        int temp = arr[index];
+        arr[index] = arr[Volume - 1];
+        arr[Volume - 1] = temp;
+        int [] meta = {1 , index , temp};
+        stack.push(meta);
+        Volume -= 1;
     }
 
     @Override
@@ -157,13 +151,13 @@ public class BacktrackingArray implements Array<Integer>, Backtrack {
         int [] stackPop = (int[]) this.stack.pop();
         if(stackPop[0] == 0){
             this.Volume = this.Volume - 1;
-        } else if (stackPop[0] == 1) {
-            for(int i = this.Volume ; i > stackPop[1]; i--){
-                this.arr[i] = this.arr[i - 1];
-            }
-
-            this.arr[stackPop[1]] = stackPop[2];
-            this.Volume = this.Volume + 1;
+        }
+        else if (stackPop[0] == 1) {
+            int place = stackPop[1];
+            int temp = arr[place];
+            arr[place] = stackPop[2];
+            Volume += 1;
+            arr[Volume - 1] = temp;
         }
     }
 
