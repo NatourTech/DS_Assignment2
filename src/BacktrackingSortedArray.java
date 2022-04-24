@@ -5,6 +5,8 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
     public int[] arr; // This field is public for grading purposes. By coding conventions and best practice it should be private.
     // TODO: implement your code here
 
+    private int volume = 0;
+
     // Do not change the constructor's signature
     public BacktrackingSortedArray(Stack stack, int size) {
         this.stack = stack;
@@ -14,52 +16,121 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
     @Override
     public Integer get(int index){
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+
+        // TODO:validate if index is legal??
+        int res = arr[index];
+    	return res; // temporal return command to prevent compilation error
     }
 
     @Override
     public Integer search(int k) {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        int low = 0, high = volume - 1;
+
+        while(low <= high){
+
+            int middle = (low + high) / 2;
+
+            if(arr[middle] == k){
+                return middle;
+            }else if ( k < arr[middle]){
+                high = middle - 1;
+            } else {
+                low = middle + 1;
+            }
+        }
+
+    	return -1; // temporal return command to prevent compilation error
     }
 
     @Override
     public void insert(Integer x) {
         // TODO: implement your code here
+        if(volume >= arr.length){
+            throw new RuntimeException("The Array is full!!");
+        }
+
+        int i = volume;
+        while( i > 0 && arr[i - 1]  > x){
+            arr[i] = arr[i - 1];
+            i = i - 1;
+        }
+
+        int[] meta = {0,i,x};
+        arr[i] = x;
+        stack.push(meta);
+        volume = volume + 1;
+
     }
 
     @Override
     public void delete(Integer index) {
         // TODO: implement your code here
+        if(volume == 0 || index > volume - 1 || index < 0){
+            throw new RuntimeException("index not valid, or array is empty please check!!");
+        }
+        int[] meta = {1,index, arr[index]};
+        for(int i = index; i < volume; i ++ ){
+            arr[i] = arr[i+1];
+        }
+        stack.push(meta);
+        volume = volume - 1;
     }
 
     @Override
     public Integer minimum() {
         // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+
+        if(volume == 0){
+            throw new RuntimeException("Array Is Empty!");
+        }
+    	return arr[0];
     }
 
     @Override
     public Integer maximum() {
-        // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        if(volume == 0){
+            throw new RuntimeException("Array Is Empty!");
+        }
+        return arr[volume - 1];
     }
 
     @Override
     public Integer successor(Integer index) {
-        // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        if(index > volume - 1 || index < 0){
+            throw new RuntimeException("invalid index!");
+        }
+        if(volume < 2 || index == volume - 1) {
+            throw new RuntimeException("There is no successor!");
+        }
+        return arr[index + 1];
     }
 
     @Override
     public Integer predecessor(Integer index) {
-        // TODO: implement your code here
-    	return null; // temporal return command to prevent compilation error
+        if(index > volume - 1 || index < 0){
+            throw new RuntimeException("invalid index!");
+        }
+        if(volume < 2 || index == 0) {
+            throw new RuntimeException("There is no successor!");
+        }
+        return arr[index - 1];
     }
 
     @Override
     public void backtrack() {
-        // TODO: implement your code here
+        int [] lasttrack = (int[]) stack.pop();
+        if(lasttrack[0] == 0){
+            arr[lasttrack[1]] = 0;
+            volume -= 1;
+        }
+        else if(lasttrack[0] == 1){
+            int place = lasttrack[1];
+            for(int i = volume - 1; i >= place; i--){
+                arr[i+1] = arr[i];
+            }
+            arr[place] = lasttrack[2];
+        }
     }
 
     @Override
@@ -72,6 +143,10 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
     @Override
     public void print() {
         // TODO: implement your code here
+
+        for(int i = 0; i < volume; i++) {
+            System.out.print(arr[i]+" ");
+        }
     }
     
 }
