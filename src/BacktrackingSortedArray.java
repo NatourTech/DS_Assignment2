@@ -121,10 +121,7 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
     public void backtrack() {
         int [] lasttrack = (int[]) stack.pop();
         if(lasttrack[0] == 0){
-            for(int i = lasttrack[1]; i< arr.length-1; i++){
-                arr[i] = arr[i+1];
-            }
-            //arr[lasttrack[1]] = 0;
+            arr[lasttrack[1]] = 0;
             volume -= 1;
         }
         else if(lasttrack[0] == 1){
@@ -133,11 +130,7 @@ public class BacktrackingSortedArray implements Array<Integer>, Backtrack {
                 arr[i+1] = arr[i];
             }
             arr[place] = lasttrack[2];
-            volume += 1;
         }
-    }
-    public int getVolume(){
-        return volume;
     }
 
     @Override
