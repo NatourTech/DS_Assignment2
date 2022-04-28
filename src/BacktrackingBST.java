@@ -40,8 +40,9 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
 
     public void insert(Node node) {
         // TODO: implement your code here
-        int [] meta = {0, node.key};
+        Object [] meta = {0, node};
         stack.push(meta);
+        is_redo = false;
         BacktrackingBST.Node temp = root;
         BacktrackingBST.Node node_parent = null;
         while(temp != null){
@@ -62,7 +63,7 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
             node_parent.right = node;
         }
 
-        //change is_redo to false
+
 
     }
 
@@ -198,13 +199,38 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
     @Override
     public void backtrack() {
         // TODO: implement your code here
+        is_redo = true;
+        Object meta_redo [] = {0, root};
+        if(!stack.isEmpty()){
+            Object[] meta = (Object[]) stack.pop();
+            if((int) meta[0] == 0){
+                Node bactrack_node = (Node) meta[1];
+                meta_redo[1] = bactrack_node;
+                redoStack.push(meta_redo);
 
+                if(bactrack_node.parent == null){
+                    root = bactrack_node;
+                } else if (bactrack_node.parent.key > bactrack_node.key) {
+                    bactrack_node.parent.left = bactrack_node;
+                }else {
+                    bactrack_node.parent.right = bactrack_node;
+                }
+            }
+        }
 
     }
 
     @Override
     public void retrack() {
         // TODO: implement your code here
+        if (!redoStack.isEmpty() && is_redo){
+            Object meta_redo = redoStack.pop();
+            if((Integer) meta_redo[0] == 0){
+                insert((Node) meta_redo[1]);
+                stack.pop();
+                is_redo = true;
+            }
+        }
     }
 
     public void printPreOrder(){

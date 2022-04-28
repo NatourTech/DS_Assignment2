@@ -24,19 +24,19 @@ public class Test {
         tree.insert(node7);
         tree.insert(node8);
         tree.print();
-        System.out.println("|");
+
 
 //        System.out.println(tree.search(120) + " | null");
 //        System.out.println(tree.search(12).getKey());
 
         //Successor of node1(12)
-        System.out.println(tree.minimum().getKey());
-        System.out.println(tree.successor(node3).getKey() + "  successor");
+//        System.out.println(tree.minimum().getKey());
+//        System.out.println(tree.successor(node3).getKey() + "  successor");
 //        System.out.println(tree.predecessor(node6).getKey() + "    predecessor");
-        tree.delete(node1);
-
-        tree.print();
-        System.out.println("|");
+//        tree.delete(node1);
+//
+//        tree.print();
+//        System.out.println("|");
 
 
     }
