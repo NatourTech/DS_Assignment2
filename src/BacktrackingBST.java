@@ -147,20 +147,20 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
 
     public Node successor(Node node) {
         // TODO: implement your code here
+
         // validate that parent of root is null//////////
         Node successor = null;
         if(node.right != null){
             BacktrackingBST.Node temp = root;
             root = node.right;
             successor = minimum();
-
             root = temp;
 
         }else {
             //test
-            System.out.println(successor.key);
             successor = node.parent;
-            while(successor != null && node.key == successor.right.key){
+            System.out.println(successor.getKey());
+            while(successor != null && node == successor.right){
                  node = successor;
                 successor = successor.parent;
             }
@@ -183,7 +183,7 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
             root = temp;
         }else {
             predecessor = node.parent;
-            while(predecessor != null && node.key == predecessor.left.key){
+            while(predecessor != null && node == predecessor.left){
                 node = predecessor;
                 predecessor = predecessor.parent;
             }

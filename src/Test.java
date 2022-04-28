@@ -30,6 +30,7 @@ public class Test {
 //        System.out.println(tree.search(12).getKey());
 
         //Successor of node1(12)
+        System.out.println(tree.minimum().getKey());
         System.out.println(tree.successor(node3).getKey() + "  successor");
 //        System.out.println(tree.predecessor(node6).getKey() + "    predecessor");
         tree.delete(node1);
