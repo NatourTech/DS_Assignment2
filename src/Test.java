@@ -2,58 +2,40 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-        int[] a = {1, 2, 4};
-        int[] b = {};
-        int x = 4;
-        int forward = 3;
-        int back = 2;
         Stack stack = new Stack();
+        Stack redoStack = new Stack();
+        BacktrackingBST tree = new BacktrackingBST(stack, redoStack);
 
+        BacktrackingBST.Node node1 = new BacktrackingBST.Node(12,null);
+        BacktrackingBST.Node node2 = new BacktrackingBST.Node(6,null);
+        BacktrackingBST.Node node3 = new BacktrackingBST.Node(1,null);
+        BacktrackingBST.Node node4 = new BacktrackingBST.Node(29,null);
+        BacktrackingBST.Node node5 = new BacktrackingBST.Node(17,null);
+        BacktrackingBST.Node node6 = new BacktrackingBST.Node(33,null);
+        BacktrackingBST.Node node7 = new BacktrackingBST.Node(30,null);
+        BacktrackingBST.Node node8 = new BacktrackingBST.Node(46,null);
 
-//        BacktrackingArray unsarray = new BacktrackingArray(stack, 12);
-//        unsarray.insert(new Integer(1));
-//        unsarray.insert(new Integer(7));
-//        unsarray.insert(new Integer(3));
-//        unsarray.insert(new Integer(-2));
-//        unsarray.insert(new Integer(-4));
-//        unsarray.insert(new Integer(-11));
-//        unsarray.insert(new Integer(-1));
-//        unsarray.insert(new Integer(2));
-//        unsarray.insert(new Integer(5));
-//        System.out.println(Arrays.toString(unsarray.arr));
-//
-//
-//        System.out.println(unsarray.successor(0));
-//        System.out.println(unsarray.predecessor(0));
-//        unsarray.print();
+        tree.insert(node1);
+        tree.insert(node2);
+        tree.insert(node3);
+        tree.insert(node4);
+        tree.insert(node5);
+        tree.insert(node6);
+        tree.insert(node7);
+        tree.insert(node8);
+        tree.print();
+        System.out.println("|");
 
+//        System.out.println(tree.search(120) + " | null");
+//        System.out.println(tree.search(12).getKey());
 
-        Stack stack2 = new Stack();
-        // sorted array obj
-        BacktrackingSortedArray soArray = new BacktrackingSortedArray(stack2, 10);
-        soArray.print();
-        soArray.insert(6);
-        soArray.insert(7);
-        soArray.insert(2);
-        soArray.insert(3);
-        soArray.insert(-4);
-        soArray.insert(-1);
-        soArray.insert(-19);
-//        soArray.print();
-//        System.out.println("");
-//        System.out.println(soArray.maximum());
-//        System.out.println(soArray.minimum());
-        soArray.print();
-        soArray.backtrack();
-        soArray.backtrack();
-        soArray.backtrack();
-        soArray.print();
-        soArray.delete(2);
-        soArray.print();
-        soArray.backtrack();
-        soArray.print();
+        //Successor of node1(12)
+        System.out.println(tree.successor(node3).getKey() + "  successor");
+//        System.out.println(tree.predecessor(node6).getKey() + "    predecessor");
+        tree.delete(node1);
 
-
+        tree.print();
+        System.out.println("|");
 
 
     }
