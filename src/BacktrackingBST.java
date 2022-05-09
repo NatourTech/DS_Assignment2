@@ -216,7 +216,10 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
     @Override
     public void backtrack() {
         // TODO: implement your code here
-        // check if stack is empty
+        if (stack.isEmpty()) {
+            throw new IllegalArgumentException("There Is No Insert Or Delete Operations Done Yet!!");
+        }
+
         is_redo = true;
         int backtrackType = (int) stack.pop();
         if(backtrackType == 0){
@@ -282,6 +285,25 @@ public class BacktrackingBST implements Backtrack, ADTSet<BacktrackingBST.Node> 
     @Override
     public void retrack() {
         // TODO: implement your code here
+        if(!redoStack.isEmpty() && is_redo){
+            int backtrackType = (int) redoStack.pop();
+            Node node = (Node) redoStack.pop();
+            if(backtrackType == 1){
+                delete(node);
+            }else{
+                Node nodeParent = node.parent;
+                if (nodeParent == null){
+                    root = node;
+                } else if (nodeParent.key > node.key) {
+                    nodeParent.left = node;
+
+                }else {
+                    nodeParent.right = node;
+                }
+            }
+
+        }
+
 
 
     }
