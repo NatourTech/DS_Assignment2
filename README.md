@@ -1,4 +1,4 @@
-Backtracking Dynamic Set ADT implementation
+Backtracking Dynamic Set ADT Implementation
 
 In this section i will implement backtracking dynamic set ADT using different underlying
 data structures.
