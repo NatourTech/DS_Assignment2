@@ -1,4 +1,4 @@
-Backtracking Dynamic Set ADT
+Backtracking Dynamic Set ADT implementation
 
 In this section i will implement backtracking dynamic set ADT using different underlying
 data structures.
@@ -25,6 +25,7 @@ printed values should be separated by single spaces, and ordered by index from l
 (the value stored in the cell indexed 0 first, the value stored in the cell indexed 1 second, and
 so on), and in a BST-based implementation the printed values should be in pre-order.
 Examples follow. 
+
 
 
 backtrack(S) – This method should cancel the last insert(S,x) or delete(S,x) performed by the
